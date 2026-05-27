@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: source-simulator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: source-simulator
+  template:
+    metadata:
+      labels:
+        app: source-simulator
+    spec:
+      containers:
+        - name: simulator
+          image: source-simulator:latest
+          imagePullPolicy: Never
+          env:
+            - name: DB_HOST
+              value: data-lab-cluster-rw
+            - name: DB_NAME
+              value: insurance
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: insurance-user-secret
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: insurance-user-secret
+                  key: password
