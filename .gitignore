@@ -1,0 +1,72 @@
+# Environment & secrets
+.env
+.env.*
+*.pem
+*.key
+*.crt
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+.Python
+
+# Logs
+logs/
+*.log
+*.out
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# Spark
+spark-warehouse/
+derby.log
+metastore_db/
+
+# Airflow
+airflow/logs/
+airflow/airflow.db
+airflow/airflow.cfg
+airflow/webserver_config.py
+airflow/standalone_admin_password.txt
+airflow/plugins/__pycache__/
+
+# Kafka
+kafka/data/
+kafka/logs/
+
+# k3s / Kubernetes
+kubeconfig
+kubeconfig.yaml
+*.kubeconfig
+.kube/
+k3s.yaml
+k3s-*.yaml
+
+# Docker
+.docker/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Data & model artifacts
+*.parquet
+*.csv
+*.json.gz
+*.avro
+data/

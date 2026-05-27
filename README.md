@@ -1,0 +1,3 @@
+# Insurance Data Platform
+
+An end-to-end data engineering platform for the insurance domain, built on a modern open-source stack. Raw policy, claims, and customer data is ingested from multiple sources into a Kafka event bus, landed in object storage (MinIO/S3), processed at scale with Apache Spark, and orchestrated by Apache Airflow — all running on a lightweight k3s Kubernetes cluster. Data quality checks (Great Expectations / dbt tests) gate each pipeline stage, and analytical notebooks in the `notebooks/` directory surface key metrics such as loss ratios, claims frequency, and customer lifetime value.
