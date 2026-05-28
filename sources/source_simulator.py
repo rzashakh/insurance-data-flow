@@ -70,4 +70,4 @@ while True:
         conn = connect()
         cur = conn.cursor()
 
-    time.sleep(10)
+    time.sleep(2)

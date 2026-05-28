@@ -1,0 +1,6 @@
+jupyter
+pandas
+pyarrow
+boto3
+s3fs
+psycopg2-binary
