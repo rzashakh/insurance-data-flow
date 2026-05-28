@@ -1,0 +1,44 @@
+# debezium-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debezium
+  namespace: data-lab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: debezium
+  template:
+    metadata:
+      labels:
+        app: debezium
+    spec:
+      containers:
+        - name: debezium
+          image: quay.io/debezium/connect:2.7
+          ports:
+            - containerPort: 8083
+          env:
+            - name: BOOTSTRAP_SERVERS
+              value: "redpanda.data-lab.svc.cluster.local:9093"
+            - name: GROUP_ID
+              value: "debezium-cluster"
+            - name: CONFIG_STORAGE_TOPIC
+              value: "debezium.configs"
+            - name: OFFSET_STORAGE_TOPIC
+              value: "debezium.offsets"
+            - name: STATUS_STORAGE_TOPIC
+              value: "debezium.status"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: debezium
+  namespace: data-lab
+spec:
+  selector:
+    app: debezium
+  ports:
+    - port: 8083
+      targetPort: 8083

@@ -1,0 +1,16 @@
+statefulset:
+  replicas: 1
+
+resources:
+  cpu:
+    cores: 1a
+  memory:
+    container:
+      max: 2Gi
+
+storage:
+  persistentVolume:
+    size: 2Gi
+
+tls:
+  enabled: false
